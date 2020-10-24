@@ -5,60 +5,92 @@ public class bowling2{
 		System.out.println("Welcome to Ten-Pin Bowling");
 		System.out.println("");
 
-		int PtotalRoundScore = 0; int gameScore = 0; int strikeCount = 0; int spareCount; int roundScore; int tempRound; int spareAgain = 1;
-		for (int i = 0; i < 11; i ++){
+	  int gameScore = 0; int roundScore = 0; int ballScore = 0; int b1Score; int b2Score;
+		boolean spareCount = false;
+		boolean strikeCount = false; boolean strikeStreak = false; boolean halfStrike = false; boolean doubleStrike = false;
+		for (int i = 1; i < 11; i ++){ // Loop for every round
 			System.out.println("Round " + i);
 			roundScore = 0;
 
-			for (int z = 1; z < 3; z++){
+			for (int z = 1; z < 3; z++){ // Loop for every turn
 				System.out.print("Score for turn " + z + ": ");
-				int ballScore = keyboard.nextInt();
-				roundScore = roundScore + ballScore;
+				ballScore = keyboard.nextInt();
 
-        if (ballScore == 10){
-          strikeCount ++;
-          System.out.println("STRIKE");
-          break;
-        }
+				b1Score = 0; b2Score = 0;
+				if (z == 1){ // Gets first ball of each turn
+					b1Score = ballScore;
+				} else if (z == 2 ){ // Gets second ball
+					b2Score = ballScore
+				}
 
-        if ((spareCount >= 1) && (spareAgain == 1)){
-          gameScore = gameScore + ballScore;
-          if (strikeCount >= 1){
-              spareAgain = 0;
+				if (ballScore == 10){ // Detect Strike
+						 strikeCount = true;
+						 System.out.println("STRIKE");
+						 break;
+				}
+			}
+			roundScore = b1Score + b2Score; // Gets total score of the round
 
-          }else if (strikeCount == 0){
-            spareCount = 0;
-          }
-        }
+			if (halfStrike == true || strikeStreak == true || strikeCount == true){ // Checks if there is any pending strike that needs to be taken care of
+				if (halfStrike == true && strikeStreak == true && strikeCount == true){ // Identify turkey
+					System.out.println("TURKEY")
+				}
+				// Strike stuff
+				if (halfStrike == true) { // Checks for a half strike
+					gameScore = gameScore + b1Score;
+					halfStrike = false;
+				}
 
-        for (strikeCount = strikeCount; strikeCount > 0; strikeCount--){
-          gameScore = gameScore + tempRound;
+				if (strikeStreak == true){ // Identify old strike
+					if (strikeCount == true){ // Identify half strike
+						gameScore = gameScore + 10;
+						halfStrike = true;
+						strikeStreak = false;
 
-          if (strikeCount >= 1){
-            tempRound = tempRound + 10;
-          }
+					} else{ // Checks for full strike
+						gameScore = (b1Score + b2Score)*2;
+						strikeStreak = false;
+					}
+				}
 
-          if ((strikeCount == 1) && (spareCount == 1)){
-            gameScore = gameScore + (tempRound-10);
-            spareCount = 0;
-            spareAgain = 1;
-          }
-        }
+				if(strikeCount == true){ // Identify new strike
+					gameScore = gameScore + 10;
+					strikeStreak = true;
+					strikeCount = false;
+				}
 
-      strikeCount = 0;
-      }
+			// Spare stuff
+			} else if(spareCount == true){ // Checks if there was a spare
+					gameScore = gameScore + b1Score + 10;
+					spareCount = false;
+			}
 
-      if ((roundScore == 10) && (ballScore != 10)){
-        spareCount ++;
-        System.out.println("SPARE");
-      }
-      gameScore = gameScore + roundScore;
+			if (roundScore == 10 && b1Score != 10){ // Detect Spare
+				spareCount = true;
+				System.out.println("SPARE");
+			} else { // Default scoring if nothing speical is happening
+				gameScore = gameScore + roundScore;
+			}
 
-      if (strikeCount == 3){
-        System.out.println("TURKEY");
-      }
+			// Special round 10 stuff
+			if (i == 10 && spareCount == true){ // Identify remaining spare
+				System.out.print("BONUS: Score for round 11: ");
+				System.out.print("BONUS: Score for final turn: ");
+				ballScore = keyboard.nextInt();
 
-      tempRound = roundScore;
+				gameScore = gameScore + ballScore
+			} else if(strikeStreak == true){ // Identify remaining full strike (//Manually input the scores because im too tired)
+				System.out.print("BONUS: Score for round 11: ");
+				System.out.print("BONUS: Score for turn 1: ");
+				b1Score = keyboard.nextInt();
+				System.out.print("BONUS: Score for turn 2: ");
+				b2Score = keyboard.nextInt();
+				if (halfStrike == true){
+					gameScore = gameScore + b1Score;
+					halfStrike
+				}
+				gameScore = gameScore + b1Score + b2Score;
+			}
 
   		System.out.println("Score: " + gameScore);
   		System.out.println("");
