@@ -5,7 +5,7 @@ public class bowling2{
 		System.out.println("Welcome to Ten-Pin Bowling");
 		System.out.println("");
 
-	  int gameScore = 0; int roundScore = 0; int ballScore = 0; int b1Score; int b2Score;
+	  int gameScore = 0; int roundScore = 0; int ballScore = 0; int b1Score = 0; int b2Score = 0;
 		boolean spareCount = false;
 		boolean strikeCount = false; boolean strikeStreak = false; boolean halfStrike = false; boolean doubleStrike = false;
 		for (int i = 1; i < 11; i ++){ // Loop for every round
@@ -20,7 +20,7 @@ public class bowling2{
 				if (z == 1){ // Gets first ball of each turn
 					b1Score = ballScore;
 				} else if (z == 2 ){ // Gets second ball
-					b2Score = ballScore
+					b2Score = ballScore;
 				}
 
 				if (ballScore == 10){ // Detect Strike
@@ -33,7 +33,7 @@ public class bowling2{
 
 			if (halfStrike == true || strikeStreak == true || strikeCount == true){ // Checks if there is any pending strike that needs to be taken care of
 				if (halfStrike == true && strikeStreak == true && strikeCount == true){ // Identify turkey
-					System.out.println("TURKEY")
+					System.out.println("TURKEY");
 				}
 				// Strike stuff
 				if (halfStrike == true) { // Checks for a half strike
@@ -78,7 +78,7 @@ public class bowling2{
 				System.out.print("BONUS: Score for final turn: ");
 				ballScore = keyboard.nextInt();
 
-				gameScore = gameScore + ballScore
+				gameScore = gameScore + ballScore;
 			} else if(strikeStreak == true){ // Identify remaining full strike (//Manually input the scores because im too tired)
 				System.out.print("BONUS: Score for round 11: ");
 				System.out.print("BONUS: Score for turn 1: ");
@@ -87,7 +87,7 @@ public class bowling2{
 				b2Score = keyboard.nextInt();
 				if (halfStrike == true){
 					gameScore = gameScore + b1Score;
-					halfStrike
+					halfStrike = false;
 				}
 				gameScore = gameScore + b1Score + b2Score;
 			}
