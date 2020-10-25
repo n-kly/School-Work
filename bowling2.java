@@ -11,12 +11,11 @@ public class bowling2{
 		for (int i = 1; i < 11; i ++){ // Loop for every round
 			System.out.println("Round " + i);
 			roundScore = 0;
+			b1Score = 0; b2Score = 0;
 
 			for (int z = 1; z < 3; z++){ // Loop for every turn
 				System.out.print("Score for turn " + z + ": ");
 				ballScore = keyboard.nextInt();
-
-				b1Score = 0; b2Score = 0;
 				if (z == 1){ // Gets first ball of each turn
 					b1Score = ballScore;
 				} else if (z == 2 ){ // Gets second ball
@@ -48,7 +47,8 @@ public class bowling2{
 						strikeStreak = false;
 
 					} else{ // Checks for full strike
-						gameScore = (b1Score + b2Score)*2;
+						gameScore = gameScore + b1Score + b2Score;
+						gameScore = gameScore + roundScore;
 						strikeStreak = false;
 					}
 				}
@@ -60,27 +60,33 @@ public class bowling2{
 				}
 
 			// Spare stuff
-			} else if(spareCount == true){ // Checks if there was a spare
-					gameScore = gameScore + b1Score + 10;
-					spareCount = false;
+		} else if(spareCount == true || roundScore == 10 && b1Score !=10){ // Checks if there was a spare
+				if (spareCount == true){ // Check for spare
+				gameScore = gameScore + b1Score;
+				gameScore = gameScore + roundScore;
+				spareCount = false;
+
+			} else if (roundScore == 10 && b1Score != 10){ // Identify spare
+				spareCount = true;
+				gameScore = gameScore + 10;
+				System.out.println("SPARE");
 			}
 
-			if (roundScore == 10 && b1Score != 10){ // Detect Spare
-				spareCount = true;
-				System.out.println("SPARE");
-			} else { // Default scoring if nothing speical is happening
+		}	else{ // Default scoring if nothing speical is happening
 				gameScore = gameScore + roundScore;
 			}
 
 			// Special round 10 stuff
 			if (i == 10 && spareCount == true){ // Identify remaining spare
-				System.out.print("BONUS: Score for round 11: ");
+				System.out.println("");
+				System.out.println("BONUS: Score for round 11: ");
 				System.out.print("BONUS: Score for final turn: ");
 				ballScore = keyboard.nextInt();
 
-				gameScore = gameScore + ballScore;
-			} else if(strikeStreak == true){ // Identify remaining full strike (//Manually input the scores because im too tired)
-				System.out.print("BONUS: Score for round 11: ");
+				gameScore = gameScore + (ballScore)*2;
+			} else if(i == 10 && strikeStreak == true){ // Identify remaining full strike (//Manually input the scores because im too tired)
+				System.out.println("");
+				System.out.println("BONUS: Round 11");
 				System.out.print("BONUS: Score for turn 1: ");
 				b1Score = keyboard.nextInt();
 				System.out.print("BONUS: Score for turn 2: ");
@@ -89,7 +95,7 @@ public class bowling2{
 					gameScore = gameScore + b1Score;
 					halfStrike = false;
 				}
-				gameScore = gameScore + b1Score + b2Score;
+				gameScore = gameScore + (b1Score + b2Score)*2;
 			}
 
   		System.out.println("Score: " + gameScore);
