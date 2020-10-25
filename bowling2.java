@@ -78,7 +78,7 @@ public class bowling2{
 				System.out.println("BONUS: Score for round 11: ");
 				System.out.print("BONUS: Score for final turn: ");
 				ballScore = keyboard.nextInt();
-				gameScore = gameScore + (ballScore)*2;
+				gameScore = gameScore + ballScore;
 			} else if(i == 10 && strikeStreak == true){ // Identify remaining full strike (//Manually input the scores because im too tired)
 				System.out.println("");
 				System.out.println("BONUS: Round 11");
@@ -91,7 +91,7 @@ public class bowling2{
 					gameScore = gameScore + b1Score;
 					halfStrike = false;
 				}
-				gameScore = gameScore + (b1Score + b2Score)*2;
+				gameScore = gameScore + b1Score + b2Score;
 			}
   		System.out.println("Score: " + gameScore);
   		System.out.println("");
