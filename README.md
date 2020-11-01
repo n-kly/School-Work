@@ -1,12 +1,12 @@
 # School-Work
 
-### bowling
-## bowling2.java
+## bowling
+### bowling2.java
 Ten-pin bowling program 
 
-### blackjack
-## card.java
+## blackjack
+### card.java
 
-## deck.java
+### deck.java
 
-## blackjack.java
+### blackjack.java
