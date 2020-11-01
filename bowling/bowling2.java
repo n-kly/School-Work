@@ -5,7 +5,7 @@ public class bowling2{
 		System.out.println("Welcome to Ten-Pin Bowling");
 		System.out.println("");
 	  int gameScore = 0; int roundScore = 0; int ballScore = 0; int b1Score = 0; int b2Score = 0;
-		boolean strikeCount = false; boolean strikeStreak = false; boolean halfStrike = false; boolean doubleStrike = false; boolean spareCount = false;
+		boolean strikeCount = false; boolean strikeStreak = false; boolean halfStrike = false; boolean spareCount = false;
 
 		for (int i = 1; i < 11; i ++){ // Loop for every round
 			System.out.println("Round " + i);
@@ -96,5 +96,6 @@ public class bowling2{
   		System.out.println("Score: " + gameScore);
   		System.out.println("");
 		}
+		keyboard.close();
 	}
 }
