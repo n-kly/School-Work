@@ -13,7 +13,7 @@ public class card{
 
   public static void shuffle(card[] array){
     for(int i = (array.length -1); i>0; i--){
-      int rand = random.nextInt(array.length)
+      int rand = random.nextInt(array.length);
       card temp = array[rand];
       array[rand] = array[i];
       ar[i] = temp;
