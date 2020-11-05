@@ -15,10 +15,11 @@ card[] deckOfCards;
 
   public void shuffle(){
     for(int i = (deckOfCards.length-1); i >= 0; i--){
-      Random randy = new Random();
 
+      Random randy = new Random();
       int rand = randy.nextInt(52);
-      card temp = deckOfCards[i];
+
+      card temp = deckOfCards[rand];
       deckOfCards[rand] = deckOfCards[i];
       deckOfCards[i] = temp;
     }

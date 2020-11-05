@@ -2,17 +2,25 @@ import java.util.*;
 
 public class game {
   public static void main(String[] args){
-    deck deckOfCards = new deck();
+    int index = 0;
+    int playerTotal = 0;
+    int dealerTotal = 0;
 
-    for (int i = 0; i < 52; i++){
-    deckOfCards.getCard(i).display();
-    }
+    deck deckOfCards = new deck(); // Creates deck
+    deckOfCards.shuffle(); // Shuffles deck
 
-    deckOfCards.shuffle();
+    System.out.println("Your Cards: ");
+    deckOfCards.getCard(index).display();
+    playerTotal = playerTotal + deckOfCards.getCard(index).getValue(); index ++;
 
-    for (int i = 0; i < 52; i++){
-      deckOfCards.getCard(i).display();
-    }
+    deckOfCards.getCard(index).display();
+    playerTotal = playerTotal + deckOfCards.getCard(index).getValue(); index ++;
+    System.out.println("Total: " + playerTotal);
+    System.out.println("------------");
+    System.out.println("")
+    System.out.println("Dealers Cards: ")
+    deckOfCards.getCard(index).display();
+
+
   }
 }
-

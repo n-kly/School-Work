@@ -13,20 +13,24 @@ class card{
 
     public void display(){ // Display
       switch(this.value){
-        case 11: strValue = "Jack"; break;
-        case 12: strValue = "Queen"; break;
-        case 13: strValue = "King"; break;
-        case 1: strValue = "Ace"; break;
+        case 11: strValue = "J"; break;
+        case 12: strValue = "Q"; break;
+        case 13: strValue = "K"; break;
+        case 1: strValue = "A"; break;
         default: strValue = Integer.toString(this.value);
       }
 
       switch(this.suit){
-          case 1: strSuit = "Hearts"; break;
-          case 2: strSuit = "Spades"; break;
-          case 3: strSuit = "Clubs"; break;
-          case 4: strSuit = "Diamonds"; break;
+          case 1: strSuit = "HEART"; break;
+          case 2: strSuit = "SUITS"; break;
+          case 3: strSuit = "CLUBS"; break;
+          case 4: strSuit = "DIAMO"; break;
       }
 
-      System.out.println(strValue + " of " + strSuit);
+      System.out.println(strSuit+" "+strValue);
+    }
+
+    public int getValue(){
+      return value;
     }
   }
