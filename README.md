@@ -16,7 +16,7 @@ Card class for the blackjack game
 ### deck.java
 Deck class for the blackjack game 
 - shuffle() - Shuffles an object of type deck
-- getCard() - Returns object type card from object type deck 
+- getCard(index) - Returns object type card from object type deck 
 
 
 ### game.java
