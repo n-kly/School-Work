@@ -11,7 +11,7 @@ class card{
       this.value = value;
     }
 
-    public void display(){ // Display
+    public void display(){ // Displays the card
       switch(this.value){
         case 11: strValue = "J"; break;
         case 12: strValue = "Q"; break;
@@ -30,7 +30,7 @@ class card{
       System.out.println(strSuit+" "+strValue);
     }
 
-    public int getValue(){
+    public int getValue(){ // Gets value of a given object card
       return value;
     }
   }
