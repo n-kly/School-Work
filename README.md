@@ -21,4 +21,4 @@ Deck class for the blackjack game
 
 ### game.java
 Main class for blackjack program 
-
+- handTotal(hand, deck, length) - Display & Get total of a hand given what deck it is using and how many cards of it to display 
